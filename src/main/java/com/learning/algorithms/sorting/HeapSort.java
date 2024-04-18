@@ -3,15 +3,17 @@ package com.learning.algorithms.sorting;
 public class HeapSort implements SortingAlgorithm {
     
     public <T extends Comparable<T>> void sort(T[] array) {
-        for (int i = array.length; i > 0; i--) {
-            heapify(array, i);
-            swap(array, 0, i - 1);
+        // First, build the initial max heap
+        int n = array.length;
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(array, n, i);
         }
-    }
 
-    private <T extends Comparable<T>> void heapify(T[] array, int size) {
-        for (int i = size / 2 - 1; i >= 0; i--)
-            heapify(array, size, i);     
+        // Then, extract elements from the heap one by one
+        for (int i = n - 1; i >= 0; i--) {
+            swap(array, 0, i);
+            heapify(array, i, 0);
+        }
     }
 
     private <T extends Comparable<T>> void heapify(T[] array, int size, int index) {
@@ -30,10 +32,9 @@ public class HeapSort implements SortingAlgorithm {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private <T> void swap(T[] array, int index1, int index2) {
-        Object temp = array[index1];
+        T temp = array[index1];
         array[index1] = array[index2];
-        array[index2] = (T) temp;
+        array[index2] = temp;
     }
 }

@@ -10,7 +10,7 @@ public class TestSortingAlgorithm {
     }
 
     public static void test(SortingAlgorithm algorithm, String algorithmName) {
-        int length = 100000; // Replace with your desired array length
+        int length = 1000000; // Replace with your desired array length
 
         // Generate best case array (sorted in ascending order)
         Integer[] bestCaseArray = new Integer[length];
