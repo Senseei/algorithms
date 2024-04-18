@@ -4,6 +4,7 @@ public class TestSortingAlgorithm {
     
     public static void main(String[] args) {
         test(new MergeSort(), "Merge Sort");
+        test(new HeapSort(), "Heap Sort");
         test(new SelectionSort(), "Selection Sort");
         test(new BubbleSort(), "Bubble Sort");
     }
