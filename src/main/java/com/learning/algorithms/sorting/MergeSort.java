@@ -1,23 +1,12 @@
 package com.learning.algorithms.sorting;
 
-public class MergeSort {
+public class MergeSort implements SortingAlgorithm {
 
-    public static void main(String[] args) {
-        System.out.println("Merge Sort");
-
-        Integer[] array = { 12, 1 };
-
-        sort(array);
-
-        for (int i = 0; i < array.length; i++)
-            System.out.print(array[i] + " ");
-    }
-
-    public static <T extends Comparable<T>> void sort(T[] array) {
+    public <T extends Comparable<T>> void sort(T[] array) {
         sort(array, 0, array.length - 1);
     }
 
-    private static <T> void sort(T[] array, int left, int right) {
+    private <T> void sort(T[] array, int left, int right) {
         if (left >= right)
             return;
 
@@ -30,7 +19,7 @@ public class MergeSort {
     }
 
     @SuppressWarnings("unchecked")
-    private static <T> void merge(T[] array, int left, int mid, int right) {
+    private <T> void merge(T[] array, int left, int mid, int right) {
         int leftIndex = 0;
         int rightIndex = 0;
         int arrayIndex = left;
