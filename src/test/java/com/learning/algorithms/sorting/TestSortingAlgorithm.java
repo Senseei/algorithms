@@ -3,22 +3,24 @@ package com.learning.algorithms.sorting;
 public class TestSortingAlgorithm {
 
     private static final int ARRAY_LENGTH = 100000;
+    private static final int TIMES = 10;
+    private static Integer[] bestCaseArray = new Integer[ARRAY_LENGTH];
     
     public static void main(String[] args) {
-        int times = 10; // Replace with your desired number of times to run the test
-        testAverageTime(new MergeSort(), "Merge Sort", times);
-        testAverageTime(new HeapSort(), "Heap Sort", times);
-        testAverageTime(new QuickSort(), "Quick Sort", times);
-        testAverageTime(new SelectionSort(), "Selection Sort", times);
-        testAverageTime(new BubbleSort(), "Bubble Sort", times);
+        System.out.println("-- Testing sorting algorithms --");
+        System.out.println("Array length: " + ARRAY_LENGTH);
+
+        for (int i = 0; i < ARRAY_LENGTH; i++)
+            bestCaseArray[i] = i;
+
+        testAverageTime(new MergeSort(), "Merge Sort", TIMES);
+        testAverageTime(new HeapSort(), "Heap Sort", TIMES);
+        testAverageTime(new QuickSort(), "Quick Sort", TIMES);
+        testAverageTime(new SelectionSort(), "Selection Sort", TIMES);
+        testAverageTime(new BubbleSort(), "Bubble Sort", TIMES);
     }
 
     public static void test(SortingAlgorithm algorithm, String algorithmName) {
-        // Generate best case array (sorted in ascending order)
-        Integer[] bestCaseArray = new Integer[ARRAY_LENGTH];
-        for (int i = 0; i < ARRAY_LENGTH; i++) {
-            bestCaseArray[i] = i;
-        }
 
         // Generate worst case array (sorted in descending order)
         Integer[] worstCaseArray = new Integer[ARRAY_LENGTH];
@@ -48,11 +50,6 @@ public class TestSortingAlgorithm {
         double worstCaseTotalTime = 0;
 
         for (int t = 0; t < times; t++) {
-                    // Generate best case array (sorted in ascending order)
-            Integer[] bestCaseArray = new Integer[ARRAY_LENGTH];
-            for (int i = 0; i < ARRAY_LENGTH; i++) {
-                bestCaseArray[i] = i;
-            }
 
             // Generate worst case array (sorted in descending order)
             Integer[] worstCaseArray = new Integer[ARRAY_LENGTH];
