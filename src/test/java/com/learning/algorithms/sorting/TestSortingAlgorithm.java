@@ -1,29 +1,29 @@
 package com.learning.algorithms.sorting;
 
 public class TestSortingAlgorithm {
+
+    private static final int ARRAY_LENGTH = 100000;
     
     public static void main(String[] args) {
         int times = 10; // Replace with your desired number of times to run the test
-        testAverageTime(new SelectionSort(), "Selection Sort", times);
-        testAverageTime(new BubbleSort(), "Bubble Sort", times);
         testAverageTime(new MergeSort(), "Merge Sort", times);
         testAverageTime(new HeapSort(), "Heap Sort", times);
         testAverageTime(new QuickSort(), "Quick Sort", times);
+        testAverageTime(new SelectionSort(), "Selection Sort", times);
+        testAverageTime(new BubbleSort(), "Bubble Sort", times);
     }
 
     public static void test(SortingAlgorithm algorithm, String algorithmName) {
-        int length = 100000; // Replace with your desired array length
-
         // Generate best case array (sorted in ascending order)
-        Integer[] bestCaseArray = new Integer[length];
-        for (int i = 0; i < length; i++) {
+        Integer[] bestCaseArray = new Integer[ARRAY_LENGTH];
+        for (int i = 0; i < ARRAY_LENGTH; i++) {
             bestCaseArray[i] = i;
         }
 
         // Generate worst case array (sorted in descending order)
-        Integer[] worstCaseArray = new Integer[length];
-        for (int i = 0; i < length; i++) {
-            worstCaseArray[i] = length - i - 1;
+        Integer[] worstCaseArray = new Integer[ARRAY_LENGTH];
+        for (int i = 0; i < ARRAY_LENGTH; i++) {
+            worstCaseArray[i] = ARRAY_LENGTH - i - 1;
         }
 
         // Sort best case array and print time taken
@@ -42,22 +42,22 @@ public class TestSortingAlgorithm {
     }
 
     public static void testAverageTime(SortingAlgorithm algorithm, String algorithmName, int times) {
-        int length = 100000; // Replace with your desired array length
+        System.out.println("Testing " + algorithmName + "...");
 
         double bestCaseTotalTime = 0;
         double worstCaseTotalTime = 0;
 
         for (int t = 0; t < times; t++) {
                     // Generate best case array (sorted in ascending order)
-            Integer[] bestCaseArray = new Integer[length];
-            for (int i = 0; i < length; i++) {
+            Integer[] bestCaseArray = new Integer[ARRAY_LENGTH];
+            for (int i = 0; i < ARRAY_LENGTH; i++) {
                 bestCaseArray[i] = i;
             }
 
             // Generate worst case array (sorted in descending order)
-            Integer[] worstCaseArray = new Integer[length];
-            for (int i = 0; i < length; i++) {
-                worstCaseArray[i] = length - i - 1;
+            Integer[] worstCaseArray = new Integer[ARRAY_LENGTH];
+            for (int i = 0; i < ARRAY_LENGTH; i++) {
+                worstCaseArray[i] = ARRAY_LENGTH - i - 1;
             }
 
             // Sort best case array and print time taken
@@ -75,7 +75,7 @@ public class TestSortingAlgorithm {
             worstCaseTotalTime += timeTaken;
         }
 
-        System.out.println(algorithmName + " - Best case average time: " + bestCaseTotalTime / times + " seconds");
-        System.out.println(algorithmName + " - Worst case average time: " + worstCaseTotalTime / times + " seconds");
+        System.out.println(" - Best case average time: " + String.format("%.3f", bestCaseTotalTime / times) + " seconds");
+        System.out.println(" - Worst case average time: " + String.format("%.3f", worstCaseTotalTime / times) + " seconds");
     }
 }
